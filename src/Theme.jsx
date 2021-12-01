@@ -15,6 +15,11 @@ const Theme = createTheme({
   typography: {
     fontFamily: "'Fira Sans', sans-serif",
   },
+  mixins: {
+    toolbar: {
+      minHeight: 80,
+    },
+  },
 });
 
 export default Theme;

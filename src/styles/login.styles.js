@@ -5,6 +5,10 @@ export default makeStyles((theme) => ({
     display: "grid",
     placeItems: "center",
     height: "100vh",
-    background: ``
+    background: `linear-gradient(45deg, ${theme.palette.primary.light}, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
+    backgroundRepeat: "no-repeat",
+  },
+  cardContent: {
+    padding: "2rem 4rem",
   },
 }));

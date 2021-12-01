@@ -9,7 +9,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={Theme}>
       <App />
-    </ThemeProvider>{" "}
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
