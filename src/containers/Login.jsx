@@ -3,6 +3,7 @@ import { Box, Card, CardContent, Typography } from "@material-ui/core";
 import useStyles from "../styles/login.styles";
 import InputElement from "../components/form/InputElement";
 import { ButtonElement } from "../components";
+import { errorMessages, pagePaths } from "../utils/constants";
 
 const defaultValues = {
   username: "",
@@ -20,9 +21,34 @@ const Login = () => {
   const onChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
+    if (value === "") {
+      setErrors({ ...errors, [id]: errorMessages[id] });
+    } else {
+      setErrors({ ...errors, [id]: "" });
+    }
   };
 
-  const login = () => {};
+  const isFormValidated = () => {
+    let validated = true;
+    const newErrors = {};
+    Object.keys(formData).forEach((k) => {
+      if (formData[k] === "") {
+        validated = false;
+        newErrors[k] = errorMessages[k];
+      } else {
+        newErrors[k] = "";
+      }
+    });
+    setErrors({ ...errors, ...newErrors });
+    return validated;
+  };
+
+  const login = () => {
+    if (isFormValidated()) {
+      localStorage.setItem("user", JSON.stringify(formData));
+      window.location.href = pagePaths.home;
+    }
+  };
 
   return (
     <Box className={classes.root}>

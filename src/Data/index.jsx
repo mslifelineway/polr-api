@@ -27,18 +27,8 @@ export const linksData = {
       headerName: "Date",
       width: 250,
       editable: true,
+      sortable: false,
     },
-    // {
-    //   field: "fullName",
-    //   headerName: "Full name",
-    //   description: "This column has a value getter and is not sortable.",
-    //   sortable: false,
-    //   width: 160,
-    //   valueGetter: (params) =>
-    //     `${params.getValue(params.id, "firstName") || ""} ${
-    //       params.getValue(params.id, "lastName") || ""
-    //     }`,
-    // },
   ],
   rows: [
     {

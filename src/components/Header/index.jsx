@@ -13,6 +13,7 @@ import { useNavigate } from "react-router";
 import { pagePaths } from "../../utils/constants";
 
 const Header = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -31,6 +32,10 @@ const Header = () => {
     navigate(link);
   };
 
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = pagePaths.login;
+  };
   return (
     <AppBar position="fixed" className={classes.root}>
       <Toolbar className={classes.toolbar}>
@@ -47,35 +52,35 @@ const Header = () => {
           </Typography>
         </Box>
         <Box className={classes.right}>
-          <div>
-            <Typography
-              variant="h6"
-              aria-controls="simple-menu"
-              aria-haspopup="true"
-              onClick={openMenu}
-              className={classes.menuButton}
-            >
-              Mukesh <KeyboardArrowDownOutlined />
-            </Typography>
-            <Menu
-              id="User menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={closeMenu}
-              className={classes.menu}
-            >
-              <MenuItem onClick={() => handleMenu(pagePaths.home)}>
-                Dashboard
-              </MenuItem>
-              <MenuItem onClick={() => handleMenu(pagePaths.settings)}>
-                Settings
-              </MenuItem>
-              <MenuItem onClick={() => handleMenu(pagePaths.logout)}>
-                Logout
-              </MenuItem>
-            </Menu>
-          </div>
+          {user && (
+            <div>
+              <Typography
+                variant="h6"
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={openMenu}
+                className={classes.menuButton}
+              >
+                {user.username} <KeyboardArrowDownOutlined />
+              </Typography>
+              <Menu
+                id="User menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={closeMenu}
+                className={classes.menu}
+              >
+                <MenuItem onClick={() => handleMenu(pagePaths.home)}>
+                  Dashboard
+                </MenuItem>
+                <MenuItem onClick={() => handleMenu(pagePaths.settings)}>
+                  Settings
+                </MenuItem>
+                <MenuItem onClick={logout}>Logout</MenuItem>
+              </Menu>
+            </div>
+          )}
         </Box>
       </Toolbar>
     </AppBar>

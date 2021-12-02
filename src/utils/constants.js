@@ -7,3 +7,8 @@ export const pagePaths = {
   admin: "/admin",
   developer: "/developer",
 };
+
+export const errorMessages = {
+  username: "Enter username",
+  password: "Enter password",
+};
