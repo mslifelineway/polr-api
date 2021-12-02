@@ -22,6 +22,7 @@ const ButtonElement = ({ text, onClick, color, style, ...rest }) => {
       fullWidth
       style={{ ...style }}
       className={classes.root}
+      {...rest}
     >
       {text}
     </Button>

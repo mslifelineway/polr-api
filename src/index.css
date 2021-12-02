@@ -25,3 +25,9 @@ code {
   cursor: not-allowed;
   color: #444444;
 }
+
+.pull-right {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}

@@ -1,10 +1,11 @@
 import React from "react";
-import { Sidebar } from "../components";
+import { DataTable, Sidebar } from "../components";
+import { linksData } from "../Data";
 
 const Links = () => {
   return (
     <Sidebar>
-      <p>Sidebar</p>
+      <DataTable rows={linksData.rows} columns={linksData.columns} />
     </Sidebar>
   );
 };
